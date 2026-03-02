@@ -59,14 +59,31 @@ const MyListingsModern = () => {
 
   const handleDelete = (itemId) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
-      Axios.delete(`http://localhost:4000/items/${itemId}`)
-        .then(() => {
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        toast.error("You must be logged in to delete items");
+        return;
+      }
+
+      console.log("Deleting item:", itemId);
+      console.log("Token:", token);
+      
+      Axios.delete(`http://localhost:4000/items/delete/${itemId}`, {
+        headers: {
+          token: token
+        }
+      })
+        .then((response) => {
+          console.log("Delete response:", response);
           toast.success("Item deleted successfully");
+          // Remove item from the current display
           setItems(items.filter(item => item._id !== itemId));
         })
         .catch((err) => {
-          toast.error("Failed to delete item");
-          console.log(err);
+          console.error("Delete error:", err);
+          console.error("Error response:", err.response);
+          toast.error(err.response?.data?.msg || "Failed to delete item");
         });
     }
   };

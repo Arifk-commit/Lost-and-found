@@ -11,7 +11,7 @@ const router = express.Router()
 router.post('/newItem', validateJWT, upload.array('images', 5), createItem)
 router.get('/:id', getItemById)
 router.get('/', getAllItems)
-router.put('/update/:id',validateJWT, updateItem)
-router.delete('/delete/:id', deleteItem)
+router.put('/update/:id', validateJWT, updateItem)
+router.delete('/delete/:id', validateJWT, deleteItem)
 
 export default router
