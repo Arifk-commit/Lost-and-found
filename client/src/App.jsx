@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
-import Signup from "./Components/Signup.jsx";
-import Login from "./Components/Login.jsx";
-import LostItems from "./Components/LostItems.jsx";
-import FoundItems from "./Components/FoundItems.jsx";
-import Home from "./Components/Home.jsx";
+import Signup from "./Components/SignupModern.jsx"; // Using modern signup
+import Login from "./Components/LoginModern.jsx"; // Using modern login
+import LostItems from "./Components/LostItemsModern.jsx"; // Using modern lost items
+import FoundItems from "./Components/FoundItemsModern.jsx"; // Using modern found items
+import Home from "./Components/HomeModern.jsx"; // Using modern home
 import ItemPage from "./Components/ItemPage.jsx";
-import LostItem from "./Components/Lost_item.jsx";
-import MyListings from "./Components/MyListings.jsx";
+import LostItem from "./Components/LostItemModern.jsx"; // Using modern post item
+import MyListings from "./Components/MyListingsModern.jsx"; // Using modern my listings
 import Layout from "./layout.jsx"; 
 window.OneSignal = window.OneSignal || [];
 const OneSignal = window.OneSignal;

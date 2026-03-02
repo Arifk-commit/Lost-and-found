@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
@@ -10,12 +11,8 @@ export default defineConfig({
       fastRefresh: true,
       // Use automatic JSX runtime
       jsxRuntime: 'automatic',
-      babel: {
-        plugins: [
-          // Add any babel plugins if needed
-        ],
-      },
     }),
+    tailwindcss(),
   ],
   resolve: {
     alias: {
