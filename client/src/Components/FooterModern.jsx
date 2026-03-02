@@ -17,6 +17,11 @@ import { Link } from 'react-router-dom';
 const FooterModern = () => {
   const currentYear = new Date().getFullYear();
 
+  // Scroll to top when clicking links
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'Lost Items', path: '/lostItems' },
@@ -110,6 +115,7 @@ const FooterModern = () => {
                 <li key={index}>
                   <Link
                     to={link.path}
+                    onClick={scrollToTop}
                     className="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-300 group"
                   >
                     <span className="flex items-center gap-2">
@@ -136,6 +142,7 @@ const FooterModern = () => {
                 <li key={index}>
                   <Link
                     to={link.path}
+                    onClick={scrollToTop}
                     className="text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-300 group"
                   >
                     <span className="flex items-center gap-2">
