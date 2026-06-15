@@ -9,6 +9,7 @@ import Home from "./Components/HomeModern.jsx"; // Using modern home
 import ItemPage from "./Components/ItemPage.jsx";
 import LostItem from "./Components/LostItemModern.jsx"; // Using modern post item
 import MyListings from "./Components/MyListingsModern.jsx"; // Using modern my listings
+import ChatbotWidget from "./Components/ChatbotWidget.jsx"; // Chatbot assistant
 import Layout from "./layout.jsx"; 
 window.OneSignal = window.OneSignal || [];
 const OneSignal = window.OneSignal;
@@ -31,6 +32,7 @@ function App() {
           <Route path="/*" element={<Home/>} />
           </Routes>
           <ToastContainer />
+          <ChatbotWidget />
           </Layout>
       </BrowserRouter>
 

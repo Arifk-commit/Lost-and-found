@@ -11,6 +11,7 @@ import { errorHandler, notFound } from './middlewares/errorHandler.js';
 import { securityHeaders, apiLimiter, sanitizeInput } from './middlewares/security.js';
 import userRoutes from './routes/userRoutes.js';
 import ItemRoutes from './routes/ItemRoutes.js';
+import chatbotRoutes from './routes/chatbotRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -72,6 +73,7 @@ app.get('/health', (_req, res) => {
 // API routes with rate limiting
 app.use('/users', apiLimiter, userRoutes);
 app.use('/Items', apiLimiter, ItemRoutes);
+app.use('/api/chatbot', apiLimiter, chatbotRoutes);
 
 // 404 handler
 app.use(notFound);
@@ -86,7 +88,7 @@ const db = env.DB;
 mongoose
   .connect(db, {
     maxPoolSize: 10,
-    serverSelectionTimeoutMS: 5000,
+    serverSelectionTimeoutMS: 15000,
     socketTimeoutMS: 45000,
   })
   .then(() => {
