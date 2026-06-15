@@ -7,7 +7,6 @@ import {
 } from '@heroicons/react/24/outline';
 import {
   Facebook,
-  Twitter,
   Instagram,
   Linkedin,
   Github,
@@ -28,8 +27,6 @@ const FooterModern = () => {
   const resources = [
     { name: 'My Listings', path: '/mylistings' },
     { name: 'How It Works', path: '/' },
-    { name: 'Safety Tips', path: '/' },
-    { name: 'FAQ', path: '/' },
   ];
 
   const socialLinks = [
@@ -40,10 +37,14 @@ const FooterModern = () => {
       color: 'hover:text-blue-400'
     },
     { 
-      name: 'Twitter', 
-      icon: <Twitter className="w-5 h-5" />, 
-      url: 'https://twitter.com',
-      color: 'hover:text-sky-400'
+      name: 'X', 
+      icon: (
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      ), 
+      url: 'https://x.com',
+      color: 'hover:text-gray-300'
     },
     { 
       name: 'Instagram', 
@@ -207,32 +208,11 @@ const FooterModern = () => {
           }}></div>
         </div>
 
-        {/* Bottom Section: Copyright & Additional Links */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm text-center md:text-left">
+        {/* Bottom Section: Copyright */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+          <p className="text-gray-500 text-sm text-center">
             &copy; {currentYear} Lost & Found. All rights reserved.
           </p>
-          
-          <div className="flex items-center gap-6 text-sm">
-            <Link 
-              to="/privacy" 
-              className="text-gray-500 hover:text-white transition-colors duration-300"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              to="/terms" 
-              className="text-gray-500 hover:text-white transition-colors duration-300"
-            >
-              Terms of Service
-            </Link>
-            <Link 
-              to="/cookies" 
-              className="text-gray-500 hover:text-white transition-colors duration-300"
-            >
-              Cookie Policy
-            </Link>
-          </div>
         </div>
       </div>
 
