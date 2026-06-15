@@ -37,7 +37,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-neutral-50 via-white to-neutral-50">
+    <div className="min-h-screen bg-linear-to-b from-neutral-50 via-white to-neutral-50">
       {/* Hero Section - Modern Glassmorphism */}
       <section className="relative overflow-hidden pt-20 pb-32 px-4">
         {/* Background Decoration */}
@@ -159,7 +159,7 @@ const Home = () => {
       </section>
 
       {/* Features Section - Modern Cards */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+      <section className="py-20 px-4 bg-linear-to-br from-primary-50 via-white to-secondary-50">
         <Container maxWidth="xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

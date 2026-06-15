@@ -47,7 +47,7 @@ function LoginModern() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-12 px-4">
+    <div className="min-h-screen bg-linear-to-br from-primary-50 via-white to-secondary-50 py-12 px-4">
       {/* Background Decorations */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-20 right-10 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>

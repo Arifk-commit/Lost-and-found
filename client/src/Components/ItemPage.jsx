@@ -90,6 +90,7 @@ function ItemPage() {
               px={{ xs: 2, sm: 5, md: 10 }}
               spacing={3}
               mt={2}
+              mb={4}
             >
               <Stack
                 direction={{ xs: 'column', lg: 'row' }}
@@ -303,12 +304,26 @@ function ItemPage() {
 
   const delete_item = () => {
     console.log("deleted");
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      toast.error("You must be logged in to delete items");
+      handleCloseDelete();
+      return;
+    }
+
+    console.log("Token being sent:", token);
+    console.log("Item ID:", item_id);
+
     axios({
       url: `http://localhost:4000/items/delete/${item_id}`,
       method: "DELETE",
+      headers: {
+        token: token
+      }
     })
       .then((response) => {
-        console.log(response);
+        console.log("Success response:", response);
         handleCloseDelete();
         toast.success('Item kicked to 🗑️ successfully!', {
             position: "bottom-right",
@@ -320,10 +335,26 @@ function ItemPage() {
             progress: undefined,
             theme: "light",
             });
-        window.location.href="/mylistings"
+        setTimeout(() => {
+          window.location.href="/mylistings"
+        }, 1000);
       })
       .catch((err) => {
-        console.log("Error" + err);
+        console.error("Delete error:", err);
+        console.error("Error response:", err.response);
+        console.error("Error data:", err.response?.data);
+        console.error("Error status:", err.response?.status);
+        handleCloseDelete();
+        
+        if (err.response?.status === 401) {
+          toast.error("Your session has expired. Please log in again.");
+          setTimeout(() => {
+            localStorage.clear();
+            window.location.href = "/log-in";
+          }, 2000);
+        } else {
+          toast.error(err.response?.data?.msg || "Failed to delete item");
+        }
       });
   };
 
@@ -331,7 +362,7 @@ function ItemPage() {
 
   return (
     <>
-    <Stack width='100%' alignItems='center' pt='10px'>
+    <Stack width='100%' alignItems='center'>
             <Stack
             direction="row"
             width="100%"
@@ -372,6 +403,7 @@ function ItemPage() {
                     alignItems: 'center',
                     width: '100%',
                     maxWidth: '1440px',
+                    pb: 6,
                 }}
             >
                 {itemDetails}
