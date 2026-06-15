@@ -1,21 +1,24 @@
 import React from "react";
-import { Stack } from '@mui/material'
-import Navbar from "./Components/Navbar.jsx";
-import Footer from "./Components/footer.jsx";
+import { Box } from '@mui/material'
+import Navbar from "./Components/NavbarModern.jsx"; // Using modern navbar
+import Footer from "./Components/FooterModern.jsx"; // Using modern footer
 
 function Layout(props) {
   return (
-            <Stack
-            spacing="0"
-            width="100%"
-            alignItems="center"
-            height="100vh"
-            justifyContent="space-between"
-        >
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        width: '100%',
+      }}
+    >
       <Navbar />
-      {props.children}
+      <Box sx={{ flex: 1, width: '100%' }}>
+        {props.children}
+      </Box>
       <Footer/>
-        </Stack>
+    </Box>
   );
 }
 
